@@ -163,6 +163,7 @@ class Node(threading.Thread):
                     # CLERK METHODS
                 elif o['method'] == 'DELIVER_ORDER':
                     if self.id == self.table.get('Restaurant'):
+                        self.logger.info('---> DELIVERED order: %s', o['args'])
                         self.send(('localhost', 5004), o) # TODO: ver como obter a porta do cliente pq podemos ter múltiplos
                     else:
                         self.send(self.successor_addr, o)
